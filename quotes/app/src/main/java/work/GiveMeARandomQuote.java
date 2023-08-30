@@ -28,7 +28,8 @@ public class GiveMeARandomQuote {
         if (jsonQuotes.size() > 0) {
                 int randomIndex =rand.nextInt(jsonQuotes.size());
                 oneQuote = jsonQuotes.get(randomIndex).getText();
-            }
+
+        }
 
 
 
@@ -54,9 +55,7 @@ public class GiveMeARandomQuote {
             if (status == 200) {
                 InputStreamReader reader = new InputStreamReader(pokeUrlConnection.getInputStream());
                 BufferedReader pokeBufferReader = new BufferedReader(reader);
-
                 StringBuilder response = new StringBuilder(); // To store the response text
-
                 String line;
                 while ((line = pokeBufferReader.readLine()) != null) {
                     response.append(line);
@@ -69,9 +68,9 @@ public class GiveMeARandomQuote {
                     System.out.println("from api");
                     ArrayList<Quote> qoutes=getArr();
                     Gson gson=new Gson();
-                    qoutes.add(new Quote(object.get("quoteText").getAsString(),object.get("quoteAuthor").getAsString()));
+                    String [] arr={};
+                    qoutes.add(new Quote( arr,object.get("quoteAuthor").getAsString(),"",object.get("quoteText").getAsString()));
                     String json = gson.toJson(qoutes);
-
                     try (FileWriter writer = new FileWriter(filePath)) {
                         writer.write(json);
                         System.out.println("Quotes saved to quotes.json");
@@ -104,6 +103,7 @@ public class GiveMeARandomQuote {
             );} catch (IOException e) {
             System.out.println(  "Error: An IOException occurred while reading the quotes file.");
         }
+        System.out.println("quotes returned successfully");
         return arrQuotes;
     }
 

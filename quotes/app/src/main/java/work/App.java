@@ -9,8 +9,25 @@ import static work.GiveMeARandomQuote.kindlyGiveMeARandomQuoteFromApi;
 public class App {
 
     public static void main(String[] args) {
-//        System.out.println(kindlyGiveMeARandomQuote());
-        System.out.println(kindlyGiveMeARandomQuoteFromApi());
+        if (args.length > 0) {
+            String arg = args[0];
 
-    }
+            if (arg.equalsIgnoreCase("quote")) {
+                System.out.println(GiveMeARandomQuote.kindlyGiveMeARandomQuote());
+            } else if (arg.equalsIgnoreCase("quoteonline")) {
+                System.out.println(GiveMeARandomQuote.kindlyGiveMeARandomQuoteFromApi());
+            } else {
+                System.out.println("use args: quote or quoteonline otherwise the app will not work");
+            }
+        } else {
+            System.out.println("use args: quote or quoteonline otherwise the app will not work");
+        }
+
+
+
+
+
+
+
+        }
 }

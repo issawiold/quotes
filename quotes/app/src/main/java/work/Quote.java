@@ -1,26 +1,24 @@
 package work;
 
+import org.checkerframework.common.returnsreceiver.qual.This;
+
 public class Quote {
     private String[] tags;
-    private String quoteAuthor;
+    private String author;
     private String likes;
-    private String quoteText;
+    private String text;
 
-    public Quote( String text,  String author) {
-        this.tags = tags;
-        this.quoteAuthor = author;
-        this.likes = likes;
-        this.quoteText = text;
-    }
 
     public Quote(String[] tags, String author, String likes, String text) {
         this.tags = tags;
-        this.quoteAuthor = author;
+        this.author = author;
         this.likes = likes;
-        this.quoteText = text;
+        this.text = text;
     }
 
+
+
     public String getText() {
-        return quoteText +" "+quoteAuthor;
+        return this.text +" "+this.author;
     }
 }
