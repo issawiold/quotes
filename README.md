@@ -10,4 +10,4 @@ To run the application, you can use the following command-line arguments:
     -   Use this argument to retrieve a random quote from the JSON file included with the app.
 2.  `quoteonline` (case-insensitive):
 
-    -   This argument fetches a random quote from an external API.
+    -   This argument get a random quote from an API.
