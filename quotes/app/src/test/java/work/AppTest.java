@@ -5,28 +5,45 @@ package work;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import work.GiveMeARandomQuote;
+import static work.GiveMeARandomQuote.getArr;
+
+import work.*;
 import work.Quote;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 class AppTest {
     @Test void appHasAGreeting() {
         App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 }
 class GiveMeaRandomQuoteTest{
     @Test void testGiveMeARandomQuote(){
         GiveMeARandomQuote classUnderTest = new GiveMeARandomQuote();
-        Quote[] qoutes=classUnderTest.getArr();
+        ArrayList<Quote> qoutes= getArr();
         String specialCase="There are no quotes available at the moment.";
         String singleQuote=classUnderTest.kindlyGiveMeARandomQuote();
         System.out.println(singleQuote);
         assertNotNull(singleQuote);
+        assertTrue(qoutes.size() > 1);
         assertNotEquals(specialCase,singleQuote);
-        assertTrue(qoutes.length > 1);
+
 
     }
+    @Test
+     void testKindlyGiveMeARandomQuoteFromApi(){
+        GiveMeARandomQuote classUnderTest = new GiveMeARandomQuote();
+        ArrayList<Quote> arr=getArr();
+        int sizeBefore=arr.size();
+        String singleQuote=classUnderTest.kindlyGiveMeARandomQuoteFromApi();
+        int result=GiveMeARandomQuote.getStatus();
+        arr=getArr();
+        int sizeAfter=arr.size();
+        assertEquals(200,result);
+        assertNotNull(singleQuote);
+        assertEquals(sizeBefore+1,sizeAfter);
 
+
+    }
 }

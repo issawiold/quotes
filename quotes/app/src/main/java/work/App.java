@@ -3,12 +3,14 @@
  */
 package work;
 
+import static work.GiveMeARandomQuote.kindlyGiveMeARandomQuote;
+import static work.GiveMeARandomQuote.kindlyGiveMeARandomQuoteFromApi;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+//        System.out.println(kindlyGiveMeARandomQuote());
+        System.out.println(kindlyGiveMeARandomQuoteFromApi());
+
     }
 }
