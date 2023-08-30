@@ -3,12 +3,31 @@
  */
 package work;
 
+import static work.GiveMeARandomQuote.kindlyGiveMeARandomQuote;
+import static work.GiveMeARandomQuote.kindlyGiveMeARandomQuoteFromApi;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
+        if (args.length > 0) {
+            String arg = args[0];
+
+            if (arg.equalsIgnoreCase("quote")) {
+                System.out.println(GiveMeARandomQuote.kindlyGiveMeARandomQuote());
+            } else if (arg.equalsIgnoreCase("quoteonline")) {
+                System.out.println(GiveMeARandomQuote.kindlyGiveMeARandomQuoteFromApi());
+            } else {
+                System.out.println("use args: quote or quoteonline otherwise the app will not work");
+            }
+        } else {
+            System.out.println("use args: quote or quoteonline otherwise the app will not work");
+        }
+
+
+
+
+
+
+
+        }
 }
