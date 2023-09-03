@@ -7,6 +7,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -14,7 +15,7 @@ import java.util.Random;
 public class GiveMeARandomQuote {
     private static final String DEFAULT_QUOTE = "There are no quotes available at the moment.";
     private static int status=0;
-    private static final String filePath = "C:\\gradlyProjects\\quotes\\app\\src\\main\\resources\\recentquotes.json";
+    private static final String filePath = "./app/src/main/resources/recentquotes.json";
     private static final String apiUrl = "http://api.forismatic.com/api/1.0/";
     private static final String method = "getQuote";
     private static final String lang = "en";
@@ -83,6 +84,9 @@ public class GiveMeARandomQuote {
                 System.out.println("NOT from api");
 
             }
+        } catch (UnknownHostException e){
+            oneQuote = kindlyGiveMeARandomQuote();
+            System.out.println("NOT from api");
         } catch (IOException e) {
             System.out.println(e);
         }
